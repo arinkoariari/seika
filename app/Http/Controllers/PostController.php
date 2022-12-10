@@ -27,7 +27,7 @@ public function store(PostRequest $request, Blog $post)
     
     $input = $request['post'];
     $post->fill($input)->save();
-    return redirect('/posts/' . $post->id);
+    return redirect('/blog/posts/' . $post->id);
 }
 public function edit(Blog $post)
 {

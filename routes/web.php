@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\QuestallController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,15 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [PostController::class, 'index']);
-Route::get('/posts/create', [PostController::class, 'create']);
-Route::get('/posts/{post}', [PostController::class, 'show']);
-Route::post('/posts', [PostController::class, 'store']);
-Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
-Route::put('/posts/{post}', [PostController::class, 'update']);
-Route::delete('/posts/{post}', [PostController::class,'delete']);
+Route::get('/blog/posts/{post}', [PostController::class, 'show']);
+Route::get('/blog', [PostController::class, 'index']);
+Route::get('/', [QuestallController::class, 'home']);
+Route::get('/blog/posts/create', [PostController::class, 'create']);
+Route::get('/mypage', function() { return view('posts/mypage');});
+Route::post('/blog/posts', [PostController::class, 'store']);
+Route::get('/blog/posts/{post}/edit', [PostController::class, 'edit']);
+Route::put('/blog/posts/{post}', [PostController::class, 'update']);
+Route::delete('/blog/posts/{post}', [PostController::class,'delete']);
 
 
 //Route::get('/', [PostController::class, 'index'])->name('index')->middleware('auth');
