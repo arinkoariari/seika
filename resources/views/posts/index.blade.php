@@ -14,7 +14,7 @@
                         <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
                     </form>
                 </div>
-                <a href="">{{ $post->category->name }}</a>
+                
             @endforeach
         </div>
          <div class='paginate'>
