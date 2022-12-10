@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Blog Name</h1>
-        <form action="/posts" method="POST">
+        <form action="/blog/posts" method="POST">
             @csrf
             <div class="title">
                 <h2>Title</h2>
@@ -21,6 +21,6 @@
             <input type="submit" value="保存"/>
         </form>
         
-        <div class="back">[<a href="/">back</a>]</div>
+        <div class="back">[<a href="/blog">back</a>]</div>
     </body>
 </html>

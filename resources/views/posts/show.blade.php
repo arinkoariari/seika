@@ -18,8 +18,8 @@
             </div>
         </div>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/blog">戻る</a>
         </div>
-       <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+       <p class="edit">[<a href="/blog/posts/{{ $post->id }}/edit">edit</a>]</p>
     </body>
 </html>
