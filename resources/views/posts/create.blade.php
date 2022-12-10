@@ -20,14 +20,7 @@
             </div>
             <input type="submit" value="保存"/>
         </form>
-        <div class="category">
-    <h2>Category</h2>
-    <select name="post[category_id]">
-        @foreach($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
-        @endforeach
-    </select>
-</div>
+        
         <div class="back">[<a href="/">back</a>]</div>
     </body>
 </html>

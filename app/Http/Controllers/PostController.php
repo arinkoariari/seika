@@ -3,44 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\Blog;
 use App\Http\Requests\PostRequest;
 use App\Models\Category;
 
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Blog $post)
 {
     return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
 }
-    public function show(Post $post)
+    public function show(Blog $post)
 {
     return view('posts/show')->with(['post' => $post]);
 }
- public function create(Category $category)
+public function create()
 {
-    return view('posts/create')->with(['categories' => $category->get()]);
+    return view('posts/create');
 }
-public function store(PostRequest $request, Post $post)
+public function store(PostRequest $request, Blog $post)
 {
     
     $input = $request['post'];
     $post->fill($input)->save();
     return redirect('/posts/' . $post->id);
 }
-public function edit(Post $post)
+public function edit(Blog $post)
 {
     return view('posts/edit')-> with(['post' => $post]) ;
 }
-public function update(PostRequest $request, Post $post)
+public function update(PostRequest $request, Blog $post)
 {
     
     $input = $request['post'];
     $post->fill($input)->save();
     return redirect('/posts/' . $post->id);
 }
-public function delete(Post $post)
+public function delete(Blog $post)
 {
     $post->delete();
     return redirect('/');
