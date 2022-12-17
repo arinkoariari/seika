@@ -18,6 +18,7 @@ protected $table = "blogs";
 protected $fillable = [
     'title',
     'body',
+    'user_id',
     
 ];
 
@@ -25,6 +26,9 @@ protected $fillable = [
 {
     return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
 }
-
+public function user()
+{
+    return $this->belongsTo(Blog::class);
+}
 }
 

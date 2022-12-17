@@ -15,21 +15,19 @@ use App\Http\Controllers\QuestallController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/blog/posts/{post}', [PostController::class, 'show']);
-Route::get('/blog', [PostController::class, 'index']);
+
+Route::get('/mypage', [PostController::class, 'mypage']);
 Route::get('/', [QuestallController::class, 'home']);
-Route::get('/blog/posts/create', [PostController::class, 'create']);
-Route::get('/mypage', function() { return view('posts/mypage');});
-Route::post('/blog/posts', [PostController::class, 'store']);
-Route::get('/blog/posts/{post}/edit', [PostController::class, 'edit']);
-Route::put('/blog/posts/{post}', [PostController::class, 'update']);
-Route::delete('/blog/posts/{post}', [PostController::class,'delete']);
+Route::get('/mypage/posts/create', [PostController::class, 'create']);
+Route::post('/mypage/posts', [PostController::class, 'store']);
+Route::get('/mypage/posts/{post}/edit', [PostController::class, 'edit']);
+Route::put('/mypage/posts/{post}', [PostController::class, 'update']);
+Route::delete('/mypage/posts/{post}', [PostController::class,'delete']);
+Route::get('/mypage/posts/{post}', [PostController::class, 'show']);
 
 
-//Route::get('/', [PostController::class, 'index'])->name('index')->middleware('auth');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/mypage', [PostController::class, 'mypage'])->name('mypage');
+Route::get('/dashboard', function () {    return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

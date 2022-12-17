@@ -1,3 +1,7 @@
+<x-app-layout>
+    <x-slot name="header">
+        　laravel
+    </x-slot>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -31,3 +35,4 @@
     
     
 </html>
+</x-app-layout>

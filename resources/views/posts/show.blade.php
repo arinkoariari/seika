@@ -1,3 +1,7 @@
+<x-app-layout>
+    <x-slot name="header">
+        　laravel
+    </x-slot>
 <!DOCTYPE HTML>
 <html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
     <head>
@@ -18,8 +22,9 @@
             </div>
         </div>
         <div class="footer">
-            <a href="/blog">戻る</a>
+            <a href="/mypage">戻る</a>
         </div>
-       <p class="edit">[<a href="/blog/posts/{{ $post->id }}/edit">edit</a>]</p>
+       <p class="edit">[<a href="/mypage/posts/{{ $post->id }}/edit">edit</a>]</p>
     </body>
 </html>
+</x-app-layout>
