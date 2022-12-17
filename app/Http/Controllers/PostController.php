@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Http\Requests\PostRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
 {
-    public function index(Blog $post)
+    public function mypage(Blog $post)
 {
-    return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+    return view('posts/mypage')->with(['posts' => $post->getPaginateByLimit()]);
 }
     public function show(Blog $post)
 {
@@ -26,8 +27,9 @@ public function store(PostRequest $request, Blog $post)
 {
     
     $input = $request['post'];
+    $input['user_id'] = Auth::id();
     $post->fill($input)->save();
-    return redirect('/blog/posts/' . $post->id);
+    return redirect('/mypage/posts/' . $post->id);
 }
 public function edit(Blog $post)
 {
@@ -38,11 +40,11 @@ public function update(PostRequest $request, Blog $post)
     
     $input = $request['post'];
     $post->fill($input)->save();
-    return redirect('/posts/' . $post->id);
+    return redirect('/mypage/posts/' . $post->id);
 }
 public function delete(Blog $post)
 {
     $post->delete();
-    return redirect('/');
+    return redirect('/mypage');
 }
 }
