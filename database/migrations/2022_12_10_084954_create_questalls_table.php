@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('questalls', function (Blueprint $table) {
-            $table->id();
+           $table->id();
+            $table->string('title', 50);
+            $table->string('body', 200);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
