@@ -16,17 +16,23 @@ use App\Http\Controllers\QuestallController;
 |
 */
 
-Route::get('/mypage', [PostController::class, 'mypage']);
 Route::get('/', [QuestallController::class, 'home']);
+Route::get('/quest/create', [QuestallController::class, 'create']);
+Route::get('/quest/{quest}', [QuestallController::class ,'show']);
+Route::post('/quest', [QuestallController::class, 'store']);
+
+
+Route::group(['middleware' => ['auth']], function(){
+Route::get('/mypage', [PostController::class, 'mypage'])->name('mypage');
 Route::get('/mypage/posts/create', [PostController::class, 'create']);
 Route::post('/mypage/posts', [PostController::class, 'store']);
 Route::get('/mypage/posts/{post}/edit', [PostController::class, 'edit']);
 Route::put('/mypage/posts/{post}', [PostController::class, 'update']);
 Route::delete('/mypage/posts/{post}', [PostController::class,'delete']);
 Route::get('/mypage/posts/{post}', [PostController::class, 'show']);
+});
 
 
-Route::get('/mypage', [PostController::class, 'mypage'])->name('mypage');
 Route::get('/dashboard', function () {    return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

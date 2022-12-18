@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Questall extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+    'title',
+    'body',
+    'user_id',
+    
+];
 
 
     public function getPaginateByLimit(int $limit_count = 10)
