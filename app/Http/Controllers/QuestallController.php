@@ -14,14 +14,14 @@ class QuestallController extends Controller
     }
     public function show(Questall $questall)
 {
-    return view('posts/Questall/show')->with(['quest' => $quest]);
+    return view('posts/Questall/show')->with(['questall' => $questall]);
  
 }
 public function create()
 {
     return view('posts/Questall/create');
 }
-public function store(Request $request, Questall $questall)
+public function store(QuestallRequest $request, Questall $questall)
 {
     $input = $request['questall'];
     $questall->fill($input)->save();

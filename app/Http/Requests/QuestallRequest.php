@@ -19,8 +19,8 @@ class QuestallRequest extends FormRequest
      */
     public function rules()
     {
-        return ['post.title' => 'required|string|max:100',
-            'post.body' => 'required|string|max:4000',
+        return ['questall.title' => 'required|string|max:100',
+            'questall.body' => 'required|string|max:4000',
             //
         ];
     }
