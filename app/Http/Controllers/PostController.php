@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Http\Requests\PostRequest;
-use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -19,9 +19,9 @@ class PostController extends Controller
 {
     return view('posts/show')->with(['post' => $post]);
 }
-public function create()
+public function create(User $user)
 {
-    return view('posts/create');
+    return view('posts/create')->with(['users' => $user->get()]);
 }
 public function store(PostRequest $request, Blog $post)
 {

@@ -45,5 +45,10 @@ class User extends Authenticatable
 {
     return $this->hasMany(Blog::class);  
 }
+
+public function getByUser(int $limit_count = 5)
+{
+     return $this->blogs()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+}
 }
     

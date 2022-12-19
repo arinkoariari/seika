@@ -1,3 +1,7 @@
+<x-app-layout>
+    <x-slot name="header">
+        　laravel
+    </x-slot>
 <!DOCTYPE HTML>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -10,11 +14,13 @@
             @csrf
             <div class="title">
                 <h2>Title</h2>
-                <input type="text" name="questall[title]" placeholder="タイトル"/>
+                <input type="text" name="questall[title]" placeholder="タイトル"value="{{ old('questall.title') }}"/>
+                <p class="title__error" style="color:red">{{ $errors->first('questall.title') }}</p>
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="questall[body]" placeholder="サムネのフォントを教えてください。"></textarea>
+                <textarea name="questall[body]" placeholder="サムネのフォントを教えてください。">{{ old('questall.body') }}</textarea>
+                <p class="body__error" style="color:red">{{ $errors->first('questall.body') }}</p>
             </div>
             <input type="submit" value="store"/>
         </form>
@@ -23,3 +29,4 @@
         </div>
     </body>
 </html>
+</x-app-layout>

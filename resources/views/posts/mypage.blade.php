@@ -19,6 +19,7 @@
              <a href='/mypage/posts/create'>create blog</a>
             @foreach ($posts as $post)
                 <div class='post'>
+                    <p>{{ $post->user->name }}</p>
                     <h2 class='title'>
                         <a href="/mypage/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h2>
@@ -29,7 +30,6 @@
                         <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
                     </form>
                 </div>
-                
             @endforeach
         </div>
          <div class='paginate'>

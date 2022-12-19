@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuestallController; 
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,18 @@ use App\Http\Controllers\QuestallController;
 */
 
 Route::get('/', [QuestallController::class, 'home']);
-Route::get('/quest/create', [QuestallController::class, 'create']);
-Route::get('/quest/{quest}', [QuestallController::class ,'show']);
-Route::post('/quest', [QuestallController::class, 'store']);
-
 
 Route::group(['middleware' => ['auth']], function(){
-Route::get('/mypage', [PostController::class, 'mypage'])->name('mypage');
+Route::get('/quest/create', [QuestallController::class, 'create']);
+Route::get('/quest/{questall}', [QuestallController::class ,'show']);
+Route::post('/quest', [QuestallController::class, 'store']);
+});
+
+Route::group(['middleware' => ['auth']], function(){
+Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage')->middleware('auth');
+});
+
+Route::group(['middleware' => ['auth']], function(){
 Route::get('/mypage/posts/create', [PostController::class, 'create']);
 Route::post('/mypage/posts', [PostController::class, 'store']);
 Route::get('/mypage/posts/{post}/edit', [PostController::class, 'edit']);
