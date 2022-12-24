@@ -45,6 +45,10 @@ class User extends Authenticatable
 {
     return $this->hasMany(Blog::class);  
 }
+public function questalls()   
+{
+    return $this->hasMany(Questall::class);  
+}
 
 public function getByUser(int $limit_count = 5)
 {

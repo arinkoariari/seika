@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Blog extends Model
 {
@@ -24,7 +25,8 @@ protected $fillable = [
 
    function getPaginateByLimit(int $limit_count = 5)
 {
-    return $this::with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    $id = Auth::id();
+    return $this->with('user')->where('user_id',$id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
 }
 public function user()
 {
