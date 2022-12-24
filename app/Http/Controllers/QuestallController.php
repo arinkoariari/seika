@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Questall;
 use App\Http\Requests\QuestallRequest;
+use Illuminate\Support\Facades\Auth;
 
 class QuestallController extends Controller
 {
@@ -24,8 +25,19 @@ public function create()
 public function store(QuestallRequest $request, Questall $questall)
 {
     $input = $request['questall'];
+    $input['user_id'] = Auth::id();
     $questall->fill($input)->save();
     return redirect('/quest/' . $questall->id);
 }
+public function User()
+{
+    return $this->belongsTo(User::class);
 }
+public function delete(Questall $questall)
+{
+    $questall->delete();
+    return redirect('/');
+}
+}
+
 ?>
