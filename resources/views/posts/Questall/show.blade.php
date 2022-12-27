@@ -17,6 +17,17 @@
                 <p>{{ $questall->body }}</p>    
             </div>
         </div>
+        @foreach ($answers as $answer)
+                <div class='answer'>
+                    <h2>from{{ $answer->user->name }}</h2>
+                        <h3 class='title'>
+                        <p>{{ $answer->title }}</p>
+                        </h3>
+                    <p class='body'>{{ $answer->body }}</p>
+                    <form action="/answer/{{ $answer->id }}" id="form_{{ $answer->id }}" method="post">
+                        @csrf
+                </div>
+        @endforeach
         <div class="footer">
             <a href="/">戻る</a>
         </div>

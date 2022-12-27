@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuestallController; 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AnswerforallController;    
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::post('/quest', [QuestallController::class, 'store']);
 Route::delete('/quest/{questall}', [QuestallController::class,'delete']);
 });
 
+Route::get('/answerforalls/create', [AnswerforallController::class, 'create']);
+Route::post('/answerforalls', [AnswerforallController::class, 'store']);
 
 
 Route::group(['middleware' => ['auth']], function(){

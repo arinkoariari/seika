@@ -2,34 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Questall extends Model
+class Answerforall extends Model
 {
     use HasFactory;
     
     protected $fillable = [
     'title',
     'body',
-    'user_id',
-    
 ];
 
-
-    public function getPaginateByLimit(int $limit_count = 10)
+    public function getPaginateByLimit(int $limit_count = 2)
 {
     // updated_atで降順に並べたあと、limitで件数制限をかける
     return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
 }
-public function user()
+public function questall()
 {
-    return $this->belongsTo(User::class);
-}
-public function answerforquestallusers()   
-{
-    return $this->hasMany(Answerforall::class);  
+    return $this->belongsTo(Questall::class);
 }
 }

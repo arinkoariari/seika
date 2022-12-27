@@ -11,7 +11,7 @@
         <a href='/mypage'>mypage</a>
         <a href='/quest/create'>みんなに質問する</a>
         <div class='questsall'>
-            @foreach ($questsall as $questall)
+            @foreach ($questsalls as $questall)
                 <div class='questsall'>
                     <h2>{{ $questall->user->name }}の質問</h2>
                         <h3 class='title'>
@@ -21,15 +21,32 @@
                     <form action="/quest/{{ $questall->id }}" id="form_{{ $questall->id }}" method="post">
                         @csrf
                 </div>
+                <a href='/answerforalls/create'>返信する</a>
+                @foreach ($answers as $answer)
+                <div class='answer'>
+                    <h2>from{{ $answer->user->name }}</h2>
+                        <h3 class='title'>
+                        <p>{{ $answer->title }}</p>
+                        </h3>
+                    <p class='body'>{{ $answer->body }}</p>
+                    <form action="/answerforalls/{{ $answer->id }}" id="form_{{ $answer->id }}" method="post">
+                        @csrf
+                </div>
+                <form action="/answerforalls/{{ $answer->id }}" id="form_{{ $answer->id }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="button" onclick="deletePost({{ $answer->id }})">answer delete</button> 
+                </form>
+            @endforeach
                 <form action="/quest/{{ $questall->id }}" id="form_{{ $questall->id }}" method="post">
                 @csrf
                 @method('DELETE')
-                <button type="button" onclick="deletePost({{ $questall->id }})">delete</button> 
+                <button type="button" onclick="deletePost({{ $questall->id }})"> question delete</button> 
                 </form>
             @endforeach
         </div>
         <div class='paginate'>
-            {{  $questsall->links() }}
+            {{  $questsalls->links() }}
         </div>
     </body>
     <script>

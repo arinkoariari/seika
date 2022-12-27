@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('questalls', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained(); 
+        Schema::table('answerforquestallusers', function (Blueprint $table) {
+            $table->string('title', 50);
+            $table->string('body', 200);
+            $table->softDeletes();
         });
     }
 
@@ -25,7 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('questalls', function (Blueprint $table) {
+        Schema::table('answerforquestallusers', function (Blueprint $table) {
             //
         });
     }
