@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Questall;
+use App\Models\Answerforall;
 use App\Http\Requests\QuestallRequest;
 use Illuminate\Support\Facades\Auth;
 
 class QuestallController extends Controller
 {
-   public function home(Questall $questall)
+   public function home(Questall $questall, Answerforall $answerforall)
 {
-        return view('posts/home')->with(['questsall' => $questall->getPaginateByLimit()]);
+        return view('posts/home')->with(['questsalls' => $questall->getPaginateByLimit()], ['answerforalls' => $answerforall->getPaginateByLimit()]);
     }
-    public function show(Questall $questall)
+    public function show(Questall $questall, Answerforall $answerforall)
 {
-    return view('posts/Questall/show')->with(['questall' => $questall]);
+    return view('posts/Questall/show')->with(['questall' => $questall], ['answerforalls' => $answerforall->getPaginateByLimit()]);
  
 }
 public function create()
