@@ -57,5 +57,29 @@ public function getByUser(int $limit_count = 5)
 {
      return $this->blogs()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
 }
+public function likes()
+    {
+        return $this->belongsToMany('App\Models\Questall','likes','user_id','questall_id')->withTimestamps();
+    }
+public function isLike($questallId)
+    {
+      return $this->likes()->where('questall_id',$questallId)->exists();
+    }
+    public function like($questallId)
+    {
+      if($this->isLike($questallId)){
+        //もし既に「いいね」していたら何もしない
+      } else {
+        $this->likes()->attach($questallId);
+      }
+    }
+    public function unlike($questallId)
+    {
+      if($this->isLike($questallId)){
+        //もし既に「いいね」していたら消す
+        $this->likes()->detach($questallId);
+      } else {
+      }
+}
 }
     

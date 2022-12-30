@@ -41,6 +41,9 @@ Route::delete('/mypage/posts/{post}', [PostController::class,'delete']);
 Route::get('/mypage/posts/{post}', [PostController::class, 'show']);
 });
 
+Route::post('/like/{questallId}',[LikeController::class,'store']);
+Route::post('/unlike/{questallId}',[LikeController::class,'destroy']);
+
 
 Route::get('/dashboard', function () {    return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
 

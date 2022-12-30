@@ -21,6 +21,7 @@
                     <form action="/quest/{{ $questall->id }}" id="form_{{ $questall->id }}" method="post">
                         @csrf
                 </div>
+                <button onclick="like({{$questall->id}})">いいね</button>
                 <a href='/answerforalls/create'>返信する</a>
                 @foreach ($answerforalls as $answerforall)
                     <div class='answer'>
