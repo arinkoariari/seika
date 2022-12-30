@@ -28,7 +28,7 @@ public function user()
 {
     return $this->belongsTo(User::class);
 }
-public function answerforquestallusers()   
+public function answerforalls()   
 {
     return $this->hasMany(Answerforall::class);  
 }

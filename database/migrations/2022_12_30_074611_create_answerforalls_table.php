@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('answerforquestallusers', function (Blueprint $table) {
-            //
+        Schema::create('answerforalls', function (Blueprint $table) {
+             $table->id();
+            $table->string('title', 50);
+            $table->string('body', 200);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('answerforquestallusers', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('answerforalls');
     }
 };

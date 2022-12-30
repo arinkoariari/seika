@@ -12,11 +12,11 @@ class QuestallController extends Controller
 {
    public function home(Questall $questall, Answerforall $answerforall)
 {
-        return view('posts/home')->with(['questsalls' => $questall->getPaginateByLimit()], ['answerforalls' => $answerforall->getPaginateByLimit()]);
+        return view('posts/home')->with(['questsalls' => $questall->getPaginateByLimit(), 'answerforalls' => $answerforall->getanswersPaginateByLimit()]);
     }
     public function show(Questall $questall, Answerforall $answerforall)
 {
-    return view('posts/Questall/show')->with(['questall' => $questall], ['answerforalls' => $answerforall->getPaginateByLimit()]);
+    return view('posts/Questall/show')->with(['questall' => $questall, 'answerforalls' => $answerforall->getanswersPaginateByLimit()]);
  
 }
 public function create()

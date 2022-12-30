@@ -17,14 +17,14 @@
                 <p>{{ $questall->body }}</p>    
             </div>
         </div>
-        @foreach ($answers as $answer)
+        @foreach ($answerforalls as $answerforall)
                 <div class='answer'>
                     <h2>from{{ $answer->user->name }}</h2>
                         <h3 class='title'>
-                        <p>{{ $answer->title }}</p>
+                        <p>{{ $answerforall->title }}</p>
                         </h3>
-                    <p class='body'>{{ $answer->body }}</p>
-                    <form action="/answer/{{ $answer->id }}" id="form_{{ $answer->id }}" method="post">
+                    <p class='body'>{{ $answerforall->body }}</p>
+                    <form action="/answer/{{ $answerforall->id }}" id="form_{{ $answerforall->id }}" method="post">
                         @csrf
                 </div>
         @endforeach
