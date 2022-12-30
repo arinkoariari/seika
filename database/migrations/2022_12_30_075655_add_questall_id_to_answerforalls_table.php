@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('answerforquestallusers', function (Blueprint $table) {
-            $table->string('title', 50);
-            $table->string('body', 200);
-            $table->softDeletes();
+        Schema::table('answerforalls', function (Blueprint $table) {
+            $table->foreignId('questall_id')->constrained(); 
         });
     }
 
@@ -27,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('answerforquestallusers', function (Blueprint $table) {
+        Schema::table('answerforalls', function (Blueprint $table) {
             //
         });
     }

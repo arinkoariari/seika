@@ -22,22 +22,22 @@
                         @csrf
                 </div>
                 <a href='/answerforalls/create'>返信する</a>
-                @foreach ($answers as $answer)
-                <div class='answer'>
-                    <h2>from{{ $answer->user->name }}</h2>
-                        <h3 class='title'>
-                        <p>{{ $answer->title }}</p>
-                        </h3>
-                    <p class='body'>{{ $answer->body }}</p>
-                    <form action="/answerforalls/{{ $answer->id }}" id="form_{{ $answer->id }}" method="post">
-                        @csrf
-                </div>
-                <form action="/answerforalls/{{ $answer->id }}" id="form_{{ $answer->id }}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="button" onclick="deletePost({{ $answer->id }})">answer delete</button> 
-                </form>
-            @endforeach
+                @foreach ($answerforalls as $answerforall)
+                    <div class='answer'>
+                        <h2>from{{ $answerforall->user->name }}</h2>
+                            <h3 class='title'>
+                            <p>{{ $answerforall->title }}</p>
+                            </h3>
+                        <p class='body'>{{ $answerforall->body }}</p>
+                        <form action="/answerforalls/{{ $answerforall->id }}" id="form_{{ $answerforall->id }}" method="post">
+                            @csrf
+                    </div>
+                    <form action="/answerforalls/{{ $answerforall->id }}" id="form_{{ $answerforall->id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" onclick="deletePost({{ $answerforall->id }})">answer delete</button> 
+                    </form>
+                @endforeach
                 <form action="/quest/{{ $questall->id }}" id="form_{{ $questall->id }}" method="post">
                 @csrf
                 @method('DELETE')

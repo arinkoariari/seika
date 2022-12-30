@@ -49,7 +49,10 @@ public function questalls()
 {
     return $this->hasMany(Questall::class);  
 }
-
+public function answerforalls()   
+{
+    return $this->hasMany(Answerforall::class);  
+}
 public function getByUser(int $limit_count = 5)
 {
      return $this->blogs()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
